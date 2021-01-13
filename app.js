@@ -1,5 +1,6 @@
 const express = require("express"),
     path = require('path'),
+    bodyParser = require('body-parser'),
     fileUpload = require('express-fileupload'),
     cors = require('cors'),
     fs = require('fs'),
@@ -12,6 +13,12 @@ app.use(cors())
 app.use(fileUpload());
 app.use('/', express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
+
+app.get("/status", (req, res) => {
+    res.json({ "status": "ok" })
+})
+app.use('/blog', require('./router/blog'))
+app.use('/', require('./router/user'))
 
 app.listen(PORT, () => {
     console.log(`App is running on http://localhost:${PORT}`);
