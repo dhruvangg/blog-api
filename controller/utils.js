@@ -10,7 +10,7 @@ module.exports = {
                 req.decoded = result;
                 next()
             } catch (error) {
-                throw new Error(error);
+                return res.status(401).json({ "status": "error", "message": "Invalid Authentication.", error })
             }
         } else {
             return res.status(401).json({ "status": "error", "message": "Authentication error. Token required." })

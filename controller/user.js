@@ -12,8 +12,7 @@ exports.signUp = async (req, res) => {
             email,
             password
         })
-        delete user.password;
-        res.status(201).json({ "status": "ok", "message": user })
+        res.status(201).json({ "status": "ok", "message": "User registered", user })
     } catch (error) {
         res.status(401).json({ "status": "error", "message": error.errors[0].message })
     }
