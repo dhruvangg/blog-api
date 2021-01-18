@@ -6,7 +6,7 @@ const express = require('express'),
 router.get('/', Post.getPosts);
 router.get('/:slug', Post.getPost);
 router.post('/', Post.createPost);
-router.delete('/:id', Post.removePost);
-router.put('/:id', Post.updatePost);
+router.delete('/:uuid', Post.removePost);
+router.put('/:uuid', Post.updatePost);
 
 module.exports = router
